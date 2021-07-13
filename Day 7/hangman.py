@@ -1,20 +1,50 @@
+
 import random
+import os
+from hangman_art import logo, stages
+from hangman_words import word_list
 
-word_list = ["aardvark", "baboon", "camel"]
+chosen_word = random.choice(word_list)
+word_length = len(chosen_word)
 
-randWord = random.choice(word_list)
+end_of_game = False
+lives = 6
+os.system('cls')
+print(logo)
 
-guess = input("Guess the letter :")
-
-for letter in randWord: 
-    if letter == guess:
-        print("right")
-    else:
-        print("wrong")
+# Create blanks
+display = []
+for _ in range(word_length):
+    display += "_"
 
 
-# TODO-1 - Randomly choose a word from the word_list and assign it to a variable called chosen_word.
+while not end_of_game:
+    guess = input("Guess a letter: ").lower()
+    os.system('cls')
 
-# TODO-2 - Ask the user to guess a letter and assign their answer to a variable called guess. Make guess lowercase.
+    if guess in display:
+        print(f"Already_guessed {guess}")
 
-# TODO-3 - Check if the letter the user guessed (guess) is one of the letters in the chosen_word.
+    # Check guessed letter
+    for position in range(word_length):
+        letter = chosen_word[position]
+        if letter == guess:
+            display[position] = letter
+
+    # Check if user is wrong.
+    if guess not in chosen_word:
+        print(f"{guess} is not there")
+        lives -= 1
+        if lives == 0:
+            end_of_game = True
+            print("You lose.")
+
+    # Check if user has got all letters.
+    if "_" not in display:
+        end_of_game = True
+        print("You win.")
+
+    # Join all the elements in the list and turn it into a String.
+    print(f"{' '.join(display)}")
+    
+    print(stages[lives])
