@@ -1,15 +1,13 @@
 import random
 
-random = random.randint(0, 2)
-print(random)
 word_list = ["aardvark", "baboon", "camel"]
 
-randWord = word_list[random]
+randWord = random.choice(word_list)
 
-letter = input("Guess the letter :")
+guess = input("Guess the letter :")
 
-for i in range(len(randWord)):
-    if letter == randWord[i]:
+for letter in randWord: 
+    if letter == guess:
         print("right")
     else:
         print("wrong")
