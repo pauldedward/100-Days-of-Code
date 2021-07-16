@@ -28,7 +28,7 @@ def report_money():
 
 
 def modify_machine_resources(resources_needed, type):
-
+    '''modifies resources in machine'''
     global resources
 
     if type == "add":
@@ -46,10 +46,10 @@ def modify_machine_resources(resources_needed, type):
 
 
 def modify_machine_money(money, method):
-
+    '''modifies money in machine'''
     global money_in_machine
     money_withdrawn = 0
-    
+
     if method == "add":
         money_in_machine += money
         return True, 0
@@ -66,7 +66,7 @@ def modify_machine_money(money, method):
 
 
 def receive_money(product):
-
+    '''calculates money operations'''
     money_required = float(MENU[product]["cost"])
     money_paid = 0
 
@@ -89,6 +89,7 @@ def receive_money(product):
 
 
 def make_coffee(coffee):
+    '''makes a coffee'''
     resources_required = MENU[coffee]["ingredients"]
     resources_available = resources.copy()
 
@@ -103,7 +104,7 @@ def make_coffee(coffee):
 
 
 def manage_machine():
-
+    '''modify resources of machine'''
     choice = input(
         "What do you want to modify in machine (money /resources) ? ").lower()
 
@@ -112,15 +113,15 @@ def manage_machine():
             "How do you want to modify money ? (add / withdraw) ").lower()
         money = float(input("Enter amount : "))
         is_modified, money_withdrawn = modify_machine_money(money, method)
-        
+
         if money_withdrawn:
             print("withdrawn amount {:.2f}".format(money_withdrawn))
-            
+
     elif choice == "resources":
         water = input("How much water do you want to add ? ")
         coffee = input("How much coffee do you want to add ? ")
         milk = input("How much milk do you want to add ? ")
-        
+
         is_modified = modify_machine_resources({
             "water": water,
             "milk": milk,
@@ -129,13 +130,16 @@ def manage_machine():
 
     if is_modified:
         print(f"Machine modified {choice} updated")
-        
+
+
 def reset_screen():
+    ''''resets screen'''
     clear()
     print(coffee_art)
-    
-def machine_on():
 
+
+def machine_on():
+    '''main machine loop'''
     machine_running = True
     while machine_running:
         report_menu()
