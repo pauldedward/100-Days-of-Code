@@ -5,18 +5,19 @@ import random
 import os
 clear = lambda: os.system('cls')
 
-def displayGameplay(personA, personB, score, isRight):
+def resetScreen():
     clear()
     print(logo)
-    
+
+def displayGameplay(personA, personB, score, isRight):
     if isRight:
         print(f"You are right Yourscore is {score}")
+        print(f'Compare A: {personA["name"]}, {personA["description"]}, from {personA["country"]}')
+        print(vs)
+        print(f'With : {personB["name"]}, {personB["description"]}, from {personB["country"]}')
     else:
         print(f"You are wrong Your final score is {score}")
-        return
-    print(f'Compare A: {personA["name"]}, {personA["description"]}, from {personA["country"]}')
-    print(vs)
-    print(f'With : {personB["name"]}, {personB["description"]}, from {personB["country"]}')
+
 
 def getPerson():
     person = random.choice(data)
@@ -28,8 +29,7 @@ def initializeGame():
         personA = getPerson()
         personB = getPerson()
         
-        clear()
-        print(logo)
+        resetScreen()
         print(f'Compare A: {personA["name"]}, {personA["description"]}, from {personA["country"]}')
         print(vs)
         print(f'With : {personB["name"]}, {personB["description"]}, from {personB["country"]}')
@@ -58,14 +58,17 @@ def play():
         else:
             answer = user_choice
         
+        resetScreen()
+        print(f'{personA["name"]} has {personA["follower_count"]} followers')
+        print(f'{personB["name"]} has {personB["follower_count"]} followers')
+        
         if user_choice == answer:
             score += 1
-            
+            personA = personB
+            personB = getPerson() 
         else:
             isRight = False
-            
-        personA = personB
-        personB = getPerson()
+        
         displayGameplay(personA, personB, score, isRight)
 
 
