@@ -6,10 +6,10 @@ my_screen = my_turtle.getscreen()
 colors = ["red", "green", "blue", "yellow", "orange", "purple", "pink", "black", "grey", "brown"]
 
 my_turtle.penup()
-my_turtle.goto(-75,75)
+my_turtle.goto(-50, 50)
 my_turtle.pendown()
 
-for sides in range(4,11):
+for sides in range(3,11):
     my_turtle.color(random.choice(colors))
     for turns in range(sides):
         angle = 360 / sides
