@@ -17,20 +17,17 @@ color_pallette = [(234, 166, 59), (45, 112, 157), (113, 150, 203), (212, 123, 16
 turtle.colormode(255)
 my_turtle = turtle.Turtle()
 my_screen = my_turtle.getscreen()
-
-my_turtle.speed(10)
 my_turtle.penup()
+my_turtle.hideturtle()
+my_turtle.speed(10)
 my_turtle.setpos(-250,-250)
 step_size = 50
-my_turtle.pensize(10)
 
 for row in range(1,11):
     for column in range(1,11):
-        my_turtle.speed(3)
-        my_turtle.pencolor(random.choice(color_pallette))
-        my_turtle.pendown()
-        my_turtle.dot()
-        my_turtle.penup()
+        my_turtle.speed(2)
+        my_turtle.dot(20, random.choice(color_pallette))
+        
         if column < 10:
             my_turtle.forward(step_size)
     
