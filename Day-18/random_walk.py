@@ -7,7 +7,6 @@ my_turtle.speed(1)
 colors = ["red", "green", "blue", "yellow", "orange", "purple", "pink", "black", "grey", "brown"]
 
 step_size = 20
-
 my_turtle.pensize(6)
 
 while True:
