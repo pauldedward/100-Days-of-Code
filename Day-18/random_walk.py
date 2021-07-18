@@ -4,7 +4,7 @@ import turtle
 turtle.colormode(255)
 my_turtle = turtle.Turtle()
 my_screen = my_turtle.getscreen()
-my_turtle.speed(3)
+my_turtle.speed(1)
 step_size = 20
 my_turtle.pensize(6)
 
