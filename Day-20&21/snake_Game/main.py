@@ -1,5 +1,7 @@
 from turtle import Turtle, Screen, heading
 from snake import *
+from food import *
+from scoreboard import *
 import time
 
 screen = Screen()
@@ -9,8 +11,9 @@ screen.bgcolor("black")
 screen.title("SnakeD")
 
 snake = Snake()
+food = Food()
+scoreboard = Score()
 direction = 0
-
 
 def move_right():
     global direction
@@ -48,6 +51,12 @@ while True:
     time.sleep(.125)
 
     snake.move(direction)
-    snake.grow(direction)
+    
+    if snake.body[0].distance(food) < 15: 
+        snake.grow(direction)
+        scoreboard.score += 1
+        food.move()
+
+    scoreboard.show()
 
 screen.exitonclick()
