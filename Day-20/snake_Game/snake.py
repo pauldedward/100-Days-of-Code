@@ -8,5 +8,22 @@ class Snake:
             todd.penup()
             todd.color("white")
             todd.shape("square")
-            todd.setx(-20 + (i * 20))
+            todd.setx(20 - (i * 20))
             self.body.append(todd)
+        self.head = self.body[0]
+    
+    def move(self, heading):
+        head_heading = self.head.heading()
+        if heading !=  head_heading or abs(heading - head_heading) != 180:
+            self.head.setheading(heading)
+
+        prev_x = self.head.xcor()
+        prev_y = self.head.ycor()
+        self.head.forward(20)
+        
+        for i in range(1, len(self.body)):
+            current_x = self.body[i].xcor()
+            current_y = self.body[i].ycor()
+            self.body[i].goto(prev_x, prev_y)
+            prev_x = current_x
+            prev_y = current_y
