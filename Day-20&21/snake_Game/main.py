@@ -45,8 +45,9 @@ screen.onkey(move_right, "Right")
 
 
 # screen.onkey(reset, "r")
+is_game_on = True
 
-while True:
+while is_game_on:
     screen.update()
     time.sleep(.125)
 
@@ -58,5 +59,9 @@ while True:
         food.move()
 
     scoreboard.show()
+    
+    if snake.body[0].xcor() > 280 or snake.body[0].xcor() < -280 or snake.body[0].ycor() > 280 or snake.body[0].ycor() < -280:
+        is_game_on = False
 
+scoreboard.show_final()
 screen.exitonclick()
