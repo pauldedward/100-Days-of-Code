@@ -48,6 +48,6 @@ while True:
     time.sleep(.125)
 
     snake.move(direction)
-
+    snake.grow(direction)
 
 screen.exitonclick()
