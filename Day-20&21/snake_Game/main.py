@@ -50,18 +50,26 @@ is_game_on = True
 while is_game_on:
     screen.update()
     time.sleep(.125)
-
+    
+    if snake.check_bitself():
+        is_game_on = False
+        break
+    
     snake.move(direction)
+    scoreboard.show()
     
     if snake.body[0].distance(food) < 15: 
         snake.grow(direction)
         scoreboard.score += 1
         food.move()
 
-    scoreboard.show()
-    
+
     if snake.body[0].xcor() > 280 or snake.body[0].xcor() < -280 or snake.body[0].ycor() > 280 or snake.body[0].ycor() < -280:
         is_game_on = False
 
+
 scoreboard.show_final()
 screen.exitonclick()
+
+
+# I should ve used slice ,methods and list comprehension

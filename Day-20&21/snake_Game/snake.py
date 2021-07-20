@@ -7,7 +7,7 @@ class Snake:
     def __init__(self):
 
         self.body = []
-        for i in range(0, 3):
+        for i in range(0, 10):
             todd = Turtle()
             todd.penup()
             todd.color("white")
@@ -58,3 +58,10 @@ class Snake:
         todd.shape("square")
         todd.goto(x_pos, y_pos)
         self.body.append(todd)
+        
+    def check_bitself(self):
+        for i in range(1, len(self.body)):
+            if self.head.xcor() == self.body[i].xcor() and self.head.ycor() == self.body[i].ycor():
+                print("Game Over")
+                return True
+        return False
