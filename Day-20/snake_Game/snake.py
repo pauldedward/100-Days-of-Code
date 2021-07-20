@@ -13,8 +13,9 @@ class Snake:
         self.head = self.body[0]
     
     def move(self, heading):
+    
         head_heading = self.head.heading()
-        if heading !=  head_heading or abs(heading - head_heading) != 180:
+        if heading !=  head_heading and abs(heading - head_heading) != 180:
             self.head.setheading(heading)
 
         prev_x = self.head.xcor()
