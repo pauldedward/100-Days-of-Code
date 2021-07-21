@@ -1,5 +1,6 @@
 from turtle import Turtle, Screen
 from paddle import *
+import time
 
 screen = Screen()
 screen.setup(width=800, height=600)
@@ -8,7 +9,7 @@ screen.title("Pong")
 
 screen.tracer(0)
 
-player = Paddle()
+player = Paddle(-360, 0)
 screen.listen()
 
 screen.onkey(player.move_up, "Up")
