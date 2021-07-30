@@ -1,6 +1,6 @@
 from turtle import Turtle
 
-STEPSIZE = 40
+STEPSIZE = 20
 
 class Paddle(Turtle):
     
@@ -14,18 +14,9 @@ class Paddle(Turtle):
         
 
     def move_up(self):
-        if not self.ycor() >= 230:
+        if not self.ycor() >= 250:
             self.sety(self.ycor() + STEPSIZE)
-    
+
     def move_down(self):
-        if not self.ycor() <= -230:
+        if not self.ycor() <= -250:
             self.sety(self.ycor() - STEPSIZE)
-
-
-# class ComputerPaddle:
-    
-#     def __init__(self, x, y):
-#         super().__init__(x, y)
-    
-#     def move_self(self):
-        
