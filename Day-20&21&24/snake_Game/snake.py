@@ -5,16 +5,17 @@ STEP_SIZE = 20
 class Snake:
 
     def __init__(self):
+        self.make_snake()
 
+    def make_snake(self):
         self.body = []
-        for i in range(0, 10):
+        for i in range(0, 3):
             todd = Turtle()
             todd.penup()
             todd.color("white")
             todd.shape("square")
             todd.setx(STEP_SIZE - (i * STEP_SIZE))
             self.body.append(todd)
-
         self.head = self.body[0]
 
     def move(self, heading):
@@ -65,3 +66,9 @@ class Snake:
                 print("Game Over")
                 return True
         return False
+
+    def reset_game(self):
+        for piece in self.body:
+            piece.clear()
+            piece.hideturtle()
+        self.make_snake()

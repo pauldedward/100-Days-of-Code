@@ -52,8 +52,10 @@ while is_game_on:
     time.sleep(.125)
     
     if snake.check_bitself():
-        is_game_on = False
-        break
+        # is_game_on = False
+        # break
+        snake.reset_game()
+        scoreboard.reset_game()
     
     snake.move(direction)
     scoreboard.show()
@@ -65,10 +67,14 @@ while is_game_on:
 
 
     if snake.body[0].xcor() > 280 or snake.body[0].xcor() < -280 or snake.body[0].ycor() > 280 or snake.body[0].ycor() < -280:
-        is_game_on = False
+        # is_game_on = False
+        snake.reset_game()
+        scoreboard.reset_game()
 
-
-scoreboard.show_final()
+    if scoreboard.score > scoreboard.high_score:
+        scoreboard.set_high_score()
+        
+# scoreboard.show_final()
 screen.exitonclick()
 
 
