@@ -25,8 +25,15 @@ phonetic_df = pandas.read_csv("./Day-26/NATO-alphabet/nato_phonetic_alphabet.csv
 
 phonetic_dict = {row.letter:row.code for (index, row) in phonetic_df.iterrows()}
 
-user_name = input("Enter Your name: ").upper()
+def generate():
+    user_name = input("Enter Your name: ").upper()
 
-phonetic_array = [phonetic_dict[letter] for letter in user_name]
+    try:
+        phonetic_array = [phonetic_dict[letter] for letter in user_name]
+    except Exception as e:
+        print(f"{e} Sorry only alphabets allowed")
+        generate()
+    else:
+        print(phonetic_array)
 
-print(phonetic_array)
+generate()
