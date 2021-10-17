@@ -1,9 +1,12 @@
 import requests
 import datetime as dt
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 pixela_endpoint = 'https://pixe.la/v1/users'
-username = 'pauldedward'
-token = 'ilgsm.0o'
+username = os.getenv('USERNAME')
+token = os.getenv('TOKEN')
 
 user_params = {
     'token': token,
